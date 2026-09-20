@@ -1,0 +1,17 @@
+resources:
+  pipelines:
+    pipeline_taxi_riding_ingestion:
+      name: taxi_riding_ingestion
+      configuration:
+        connection_string: {{secrets/rideapp/eh_connection_string}}
+      libraries:
+        - glob:
+            include: /Workspace/Users/neerajthelotus10@gmail.com/Taxi_RidingApp/taxi_riding_ingestion/transformations/**
+      schema: bronze
+      continuous: false
+      development: false
+      photon: true
+      channel: CURRENT
+      catalog: taxi_ridingapp_catalog
+      serverless: true
+      root_path: /Workspace/Users/neerajthelotus10@gmail.com/TaxiBooking-ETL/taxi_riding_ingestion
