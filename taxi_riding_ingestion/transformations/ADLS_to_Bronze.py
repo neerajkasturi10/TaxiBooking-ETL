@@ -2,7 +2,7 @@ from pyspark import pipelines as dp
 from pyspark.sql.functions import *
 
 # Configure Azure Blob Storage SAS token for wasbs:// access
-SAS_TOKEN = "sp=r&st=2026-09-13T14:29:59Z&se=2026-09-29T22:44:59Z&spr=https&sv=2026-02-06&sr=c&sig=rOoD0HPkj94%2BUqB67dzlK0%2BffBU5uo2F%2B9aHI%2Fu4zAQ%3D"
+SAS_TOKEN = dbutils.secrets.get(scope="rideapp", key="adls_sas_token")
 spark.conf.set("fs.azure.sas.raw.dlridingappdev.blob.core.windows.net", SAS_TOKEN)
 
 # Base paths for Azure Blob Storage
