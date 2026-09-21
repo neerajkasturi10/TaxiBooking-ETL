@@ -36,7 +36,7 @@ df = spark.readStream.format("kafka") \
 df = df.withColumn("rides", col("value").cast("string"))
 # Display the streaming DataFrame (for testing Event Hubs connectivity)
 # Note: display() on streaming DataFrames creates a temporary streaming query
-display(df, checkpointLocation = "/Volumes/taxi_ridingapp_catalog/bronze/my_volume_2/my_next_volume/")
+display(df, checkpointLocation = "/Volumes/taxi_ridingapp_catalog/bronze/my_volume_2/my_next_volume_v2/", outputMode = "append")
 
 # COMMAND ----------
 
