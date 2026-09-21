@@ -60,26 +60,26 @@ Azure Event Hub          Azure Data Lake Storage (ADLS)
    (streaming)                (reference data & historical)
         │                              │
         ▼                              ▼
-  ┌─────────────┐            ┌──────────────┐
-  │  BRONZE     │            │   BRONZE     │
-  │ raw_ingestion│           │ mappers &    │
+  ┌─────────────-┐            ┌──────────────┐
+  │  BRONZE      │            │   BRONZE     │
+  │ raw_ingestion│            │ mappers &    │
   │ (Kafka)      │            │ historical   │
-  └──────┬──────┘            └──────┬───────┘
+  └──────┬──────-┘            └──────┬───────┘
          │                          │
          ▼                          ▼
   ┌──────────────────────────────────────┐
   │           SILVER                     │
   │  bookings_stg  →  riding_app_obt     │
-  │  (parse JSON)    (enrich with joins)  │
+  │  (parse JSON)    (enrich with joins) │
   └──────────────────┬───────────────────┘
                      │
                      ▼
-  ┌──────────────────────────────────────┐
-  │            GOLD                      │
+  ┌──────────────────────────────────────-┐
+  │            GOLD                       │
   │  dim_passenger  dim_rider  dim_vehicle│
   │  dim_bookings   fact_taxis            │
   │  (SCD Type 2)   (SCD Type 1)          │
-  └──────────────────────────────────────┘
+  └──────────────────────────────────────-┘
 ```
 
 ---
